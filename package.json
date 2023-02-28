@@ -1,0 +1,41 @@
+{
+  "name": "husky-test",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "config": {
+    "commit-message-validator": {
+      "pattern": "^[A-Z].+ COP-(\\d+|OPS)$",
+      "errorMessage": "Commit message doesn't match code style"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commit-message-validator",
+      "pre-push": "validate-branch-name"
+    }
+  },
+  "validate-branch-name": {
+    "pattern": "^master$|^COP-(\\d+|OPS)-[A-Z].+$",
+    "errorMsg": "Branch name doesn't match code style"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix ./src",
+      "prettier --write ./src ./database"
+    ]
+  },
+  "dependencies": {
+    "eslint": "8.35.0",
+    "eslint-config-next": "13.2.1",
+    "next": "13.2.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  }
+}
