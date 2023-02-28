@@ -24,7 +24,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
+      "pre-commit": "lint:check",
       "commit-msg": "commit-message-validator",
       "pre-push": "validate-branch-name"
     }
