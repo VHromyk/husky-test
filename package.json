@@ -31,7 +31,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "eslint --check ./src",
+      "eslint --fix ./src",
       "prettier --write ./src"
     ]
   },
