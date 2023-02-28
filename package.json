@@ -6,7 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "hook:init": "npx husky install",
+    "hook:pre-commit": "npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
+    "hook:commit-msg": "npx husky add .husky/commit-msg \"npx commit-message-validator\"",
+    "hook:pre-push": "npx husky add .husky/pre-push \"npx validate-branch-name\"",
+    "format:check": "prettier --check ./src",
+    "format:write": "prettier --write ./src",
+    "lint:check": "eslint ./src",
+    "lint:fix": "eslint --fix ./src"
   },
   "config": {
     "commit-message-validator": {
@@ -26,9 +34,9 @@
     "errorMsg": "Branch name doesn't match code style"
   },
   "lint-staged": {
-    "*.ts": [
+    "*.js": [
       "eslint --fix ./src",
-      "prettier --write ./src ./database"
+      "prettier --write ./src"
     ]
   },
   "dependencies": {
