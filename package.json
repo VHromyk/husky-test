@@ -9,8 +9,6 @@
     "lint": "next lint",
     "hook:init": "npx husky install",
     "hook:pre-commit": "npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
-    "hook:commit-msg": "npx husky add .husky/commit-msg \"npx commit-message-validator\"",
-    "hook:pre-push": "npx husky add .husky/pre-push \"npx validate-branch-name\"",
     "format:check": "prettier --check ./src",
     "format:write": "prettier --write ./src",
     "lint:check": "eslint ./src",
@@ -24,9 +22,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint:check",
-      "commit-msg": "commit-message-validator",
-      "pre-push": "validate-branch-name"
+      "pre-commit": "lint-staged"
     }
   },
   "validate-branch-name": {
@@ -49,6 +45,7 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "lint-staged": "^13.1.2",
     "prettier": "^2.8.4"
   }
 }
